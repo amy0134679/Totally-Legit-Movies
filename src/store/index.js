@@ -2,11 +2,16 @@ import { defineStore } from 'pinia'
 
 export const useStore = defineStore('store', {
   state: () => ({
-    user: "Mr. Qayum",
+    movies: [],
+    cart: [],
   }),
   actions: {
-    greeting() {
-      console.log(`Hello ${this.user}!`);
+    addToCart(poster, title) {
+      this.cart.push({
+        poster,
+        title,
+      });
+      console.log(this.cart);
     }
   }
 })

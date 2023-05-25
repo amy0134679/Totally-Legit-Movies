@@ -1,24 +1,33 @@
 <script setup>
-import axios from "axios";
+import { ref } from "vue";
+import Modal from "../components/Modal.vue";
+import { useStore } from "../store/index.js";
+import { useRouter } from "vue-router";
 
-const movies = (
-  await axios.get("https://api.themoviedb.org/3/movie/popular", {
-    params: {
-      api_key: import.meta.env.VITE_TMDB_API_KEY,
-      region: "US",
-      language: "en",
-      include_adult: false,
-    },
-  })
-).data;
+const router = useRouter();
+const showModal = ref(false);
+const selectedRecordId = ref(0);
+const store = useStore();
+
+const toggleModal = (id) => {
+  showModal.value = !showModal.value;
+  selectedRecordId.value = id;
+};
 </script>
 
 <template>
-  <div v-if="movies" class="tiles">
-    <div v-for="movie in movies.results" class="tile">
-      <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`" />
+  <div>
+    <button @click="router.push('/cart')">Cart</button>
+    <div v-if="store.movies" class="tiles">
+      <div v-for="movie in store.movies" class="tile">
+        <img
+          :src="`https://image.tmdb.org/t/p/w500/${movie.poster}`"
+          @click="toggleModal(movie.id)"
+        />
+      </div>
     </div>
   </div>
+  <Modal v-if="showModal" :id="selectedRecordId" @toggleModal="toggleModal()" />
 </template>
 
 <style scoped>
