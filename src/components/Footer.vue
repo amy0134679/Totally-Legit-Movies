@@ -2,7 +2,12 @@
 
 <template>
   <div class="footer-container">
-    <h4>My smelly foot!</h4>
+    <h4>
+      Company Info Company Name:  Entertainment Address: 1234 Movie
+      Chenle, China, CA 90001 Phone: (555) 123-4567 Email:
+      info@silverscreenentertainment.com Website:
+      www.silverscreenentertainment.com
+    </h4>
   </div>
 </template>
 

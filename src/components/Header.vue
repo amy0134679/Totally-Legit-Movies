@@ -6,13 +6,15 @@ const router = useRouter();
 
 <template>
   <div class="header-container">
-    <h1>My Company</h1>
+    <h1>Movie Site</h1>
     <button @click="router.push('/login')">Login</button>
   </div>
 </template>
 
 <style scoped>
+ 
 .header-container {
+  font-size: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;

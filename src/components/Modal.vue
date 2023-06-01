@@ -11,7 +11,6 @@ const movie = (
       api_key: import.meta.env.VITE_TMDB_API_KEY,
       region: "US",
       language: "en",
-      include_adult: false,
     },
   })
 ).data;
