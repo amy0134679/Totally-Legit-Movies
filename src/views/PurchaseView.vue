@@ -33,10 +33,20 @@ const toggleModal = (id) => {
 <style scoped>
 .tiles {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
 }
 
 img {
-  width: 200px;
+  width: 250px;
+  padding-bottom: 30px;
 }
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
 </style>

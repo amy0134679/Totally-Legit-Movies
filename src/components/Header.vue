@@ -9,6 +9,7 @@ const router = useRouter();
     <h1>Movie Site</h1>
     <button @click="router.push('/login')">Login</button>
   </div>
+
 </template>
 
 <style scoped>

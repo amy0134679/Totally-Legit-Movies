@@ -34,6 +34,7 @@ const movie = (
 
 <style scoped>
 .modal-outer-container {
+  /* filter:blur(20px); */
   position: fixed;
   top: 0;
   display: flex;
@@ -59,14 +60,17 @@ const movie = (
   border: none;
   background: #3b444b;
   font-weight: bold;
+  filter:blur(20px);
 }
 
 .modal-outer-container .modal-inner-container .icon {
   font-size: 1.25rem;
   color: white;
+  filter:blur(20px);
 }
 
 img {
   width: 200px;
+
 }
 </style>
