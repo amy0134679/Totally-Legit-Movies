@@ -9,7 +9,7 @@ const store = useStore();
 
   <img
         id="background"
-        :src="`https://images8.alphacoders.com/749/749455.png`"
+        :src="`https://img.freepik.com/free-photo/vivid-blurred-colorful-background_58702-2513.jpg?w=1480&t=st=1685753987~exp=1685754587~hmac=73e09f7524ad5ea1f9bbd3510c1294277b6ee526cb3918ae3252c3b5e77efe49`"
         alt=""
       />
 
@@ -57,6 +57,6 @@ img {
   }
 
 #background{
-  filter:blur(3px);
+  filter:blur(2px);
 }
 </style>

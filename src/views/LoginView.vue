@@ -10,7 +10,7 @@ const login = () => {
   if (username.value === "tmdb" && password.value === "movies") {
     router.push("/purchase")
   } else {
-    alert("Invalid username/password!")
+    alert("Your Username or Password is Incorrect. TRY AGAIN DUMBASS!")
   }
   console.log(username.value, password.value);
 }
@@ -19,7 +19,7 @@ const login = () => {
 <template>
    <img
         id="background"
-        :src="`https://images8.alphacoders.com/749/749455.png`"
+        :src="`https://c4.wallpaperflare.com/wallpaper/577/496/4/peanuts-comic-snoopy-charlie-brown-theaters-wallpaper-preview.jpg`"
         alt=""
       />
 
@@ -67,7 +67,6 @@ input {
 }
 
 #button {
-  
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin-right: 10px;
   border-radius: 5px;

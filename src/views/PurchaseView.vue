@@ -17,6 +17,7 @@ const toggleModal = (id) => {
 
 <template>
   <div>
+  <h1>Browse Movies</h1>
     <button @click="router.push('/cart')">Cart</button>
     <div v-if="store.movies" class="tiles">
       <div v-for="movie in store.movies" class="tile">
@@ -31,6 +32,17 @@ const toggleModal = (id) => {
 </template>
 
 <style scoped>
+button {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-right: 10px;
+  border-radius: 5px;
+  background-color: #d8b9c3;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  filter: drop-shadow(-10px 10px 20px #827397);
+}
+
 .tiles {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -39,6 +51,7 @@ const toggleModal = (id) => {
 img {
   width: 250px;
   padding-bottom: 30px;
+  box-shadow: 0 0 8px 8px white inset;
 }
 #background {
   position: fixed;
@@ -48,5 +61,8 @@ img {
   height: 100vh;
   z-index: -1;
 }
+ h1 {
+  color:aliceblue;
+ }
 
 </style>

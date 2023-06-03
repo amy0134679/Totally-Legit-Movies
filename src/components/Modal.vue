@@ -33,6 +33,22 @@ const movie = (
 </template>
 
 <style scoped>
+#movie {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 20px;
+  margin: auto;
+  padding: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  background-color: rgba(252, 210, 235, 0.25);
+  filter: drop-shadow(-10px 10px 20px #827397);
+  margin-top: 500px;
+  height: 500px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
 .modal-outer-container {
   /* filter:blur(20px); */
   position: fixed;
@@ -43,17 +59,24 @@ const movie = (
   width: 100vw;
   height: 100vh;
   background: #00000099;
+
   z-index: 5;
 }
 
 .modal-outer-container .modal-inner-container {
-  background-color: #3b444b;
-  width: clamp(280px, 100%, 900px);
-  height: 50vh;
-  position: relative;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  background-color: rgba(252, 210, 235, 0.25);
+  filter:blur(20px);
+  filter: drop-shadow(-10px 10px 20px #827397);
+  margin-top: 50px;
+  height: 250px;
+  width: 50%;
 }
 
 .modal-outer-container .modal-inner-container button {
+  filter:blur(20px);
+
   position: absolute;
   right: 0px;
   padding: 1rem;
@@ -64,6 +87,8 @@ const movie = (
 }
 
 .modal-outer-container .modal-inner-container .icon {
+  filter:blur(20px);
+
   font-size: 1.25rem;
   color: white;
   filter:blur(20px);

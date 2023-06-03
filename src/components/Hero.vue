@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+
+</script>
 
 <template>
   <div class="hero-container">
@@ -23,8 +25,7 @@
 }
 
 h1 {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  color: white;
+  font-family: 'Hind', sans-serif;  color: white;
   font-size: 20px;
   padding: 2rem;
   width: 100%;
