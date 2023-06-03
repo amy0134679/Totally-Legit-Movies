@@ -5,7 +5,6 @@ const router = useRouter();
 </script>
 
 <template>
-
   <div class="header-container">
     <h1>Movie Site</h1>
     <button @click="router.push('/login')">Login</button>
@@ -53,4 +52,4 @@ button:hover {
 </style>
 
 // font-family: 'Archivo Black';
-font-family: 'Hind', sans-serif;
+//font-family: 'Hind', sans-serif;
