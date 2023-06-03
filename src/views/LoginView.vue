@@ -46,8 +46,7 @@ const login = () => {
   border-radius: 20px;
   margin: auto;
   padding: 40px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: white;
+  font-family: 'Archivo Black', sans-serif;  color: white;
   align-items: center;
   background-color: rgba(252, 210, 235, 0.25);
   filter: drop-shadow(-10px 10px 20px #827397);
@@ -67,8 +66,7 @@ input {
 }
 
 #button {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin-right: 10px;
+  font-family: 'Archivo Black', sans-serif;  margin-right: 10px;
   border-radius: 5px;
   background-color: #d8b9c3;
   color: white;

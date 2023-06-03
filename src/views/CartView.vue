@@ -57,6 +57,6 @@ img {
   }
 
 #background{
-  filter:blur(2px);
+  filter:blur(3px);
 }
 </style>

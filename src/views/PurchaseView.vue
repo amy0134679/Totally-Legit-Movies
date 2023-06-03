@@ -16,8 +16,14 @@ const toggleModal = (id) => {
 </script>
 
 <template>
+   <img
+    id="background"
+    :src="`https://img.freepik.com/free-vector/blue-pink-halftone-background_53876-99557.jpg?w=1480&t=st=1685754405~exp=1685755005~hmac=dabe7a36b79a0fa6348b82fb1eb6df8a5bef41a98be8992cf0cf7871f91b849f`"
+    alt=""
+  />
+
   <div>
-  <h1>Browse Movies</h1>
+  <h1>Browse Trending Movies</h1>
     <button @click="router.push('/cart')">Cart</button>
     <div v-if="store.movies" class="tiles">
       <div v-for="movie in store.movies" class="tile">
@@ -35,7 +41,9 @@ const toggleModal = (id) => {
 button {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin-right: 10px;
+  padding: 20px;
   border-radius: 5px;
+  border-color: #d8b9c3;
   background-color: #d8b9c3;
   color: white;
   font-size: 20px;
@@ -51,7 +59,6 @@ button {
 img {
   width: 250px;
   padding-bottom: 30px;
-  box-shadow: 0 0 8px 8px white inset;
 }
 #background {
   position: fixed;
@@ -62,7 +69,10 @@ img {
   z-index: -1;
 }
  h1 {
+  margin: 30px;
   color:aliceblue;
+  font-family: 'Chivo', sans-serif;
+  font-size: 50px;
  }
 
 </style>
