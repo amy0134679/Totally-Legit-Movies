@@ -27,11 +27,11 @@ const fetchMovieDetails = async () => {
         language: "en",
       },
     });
-    movie.runtime = response.data.runtime;
+    movie.runtime = response.data.runtime; // Update movie object directly
   }
 };
 
-fetchMovieDetails();
+fetchMovieDetails(); // Call the function to fetch movie details
 </script>
 
 <style>
