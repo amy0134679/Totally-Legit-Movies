@@ -32,7 +32,7 @@ const movie = (
             <h2>{{ movie.release_date }}</h2>
             <p>{{ movie.overview }}</p>
             <h2>Price: ${{ movie.runtime }}.00</h2>
-            <h3 @click="store.addToCart(movie.poster_path, movie.title)">
+            <h3 @click="store.addToCart(movie.poster_path, movie.title, movie.runtime)">
               Add to Cart
             </h3>
           </div>

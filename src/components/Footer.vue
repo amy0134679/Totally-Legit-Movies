@@ -31,9 +31,8 @@
   width: 90vw;
   padding: 30px;
   border-radius: 10px;
-  margin: 0 auto; /* Center the footer horizontally */
+  margin: 0 auto; 
 }
-
 .footer-column {
   flex-basis: 50%;
 }

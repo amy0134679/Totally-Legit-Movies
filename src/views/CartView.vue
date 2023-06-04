@@ -5,13 +5,27 @@
     alt=""
   />
 
-  <h1>Your Shopping Cart</h1>
-  <div id="movie" v-for="movie in store.cart" :key="movie.id">
-    <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster}`" />
-    <h2>{{ movie.title }}</h2>
-    <h2>Price: ${{ movie.price }}.00</h2>
-    <h2>Runtime: {{ movie.runtime }} minutes</h2>
+  <div id="cart-container">
+    <div id="movie-list">
+      <h1>Your Shopping Cart</h1>
+      <div class="movie" v-for="movie in store.cart" :key="movie.id">
+        <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster}`" />
+        <h2>{{ movie.title }}</h2>
+        <h2>Price: ${{ movie.runtime }}.00</h2>
+      </div>
+    </div>
+
+    <div id="order-summary">
+      <h2>Order Summary</h2>
+      <div v-for="movie in store.cart" :key="movie.id">
+        <h3>{{ movie.title }}</h3>
+        <h2>Price: ${{ movie.runtime }}.00</h2>
+      </div>
+      <h3>Total: ${{ calculateTotal() }}.00 </h3>
+    </div>
   </div>
+
+ 
 </template>
 
 <script setup>
@@ -31,10 +45,77 @@ const fetchMovieDetails = async () => {
   }
 };
 
-fetchMovieDetails(); // Call the function to fetch movie details
+
+const calculateTotal = () => {
+  return store.cart.reduce((total, movie) => total + movie.runtime, 0);
+};
+
 </script>
 
 <style>
+#cart-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#movie-list {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie {
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Hind", sans-serif;
+  color: white;
+  background-color: rgba(252, 210, 235, 0.3);
+  filter: blur(20px);
+  filter: drop-shadow(-10px 10px 20px #827397);
+  padding: 30px;
+  border-radius: 10px;
+  margin: 0 auto; 
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+img {
+  width: 175px;
+}
+
+#order-summary {
+  width: 40%;
+  background-color: rgba(252, 210, 235, 0.25);
+  padding: 20px;
+  border-radius: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  filter: drop-shadow(-10px 10px 20px #827397);
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+#order-summary h3:last-child {
+  margin-bottom: 0;
+}
+
+#order-summary h3:first-child {
+  margin-top: 0;
+}
+
+#order-summary h3:last-child::before {
+  content: "Total: ";
+}
+
 #movie {
   display: flex;
   flex-wrap: wrap;
