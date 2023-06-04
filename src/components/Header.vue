@@ -2,11 +2,13 @@
 import { useRouter } from "vue-router";
 
 const router = useRouter();
+
+
 </script>
 
 <template>
   <div class="header-container">
-    <h1>Movie Site</h1>
+    <h1>Totally Legit Movie Site</h1>
     <button @click="router.push('/login')">Login</button>
   </div>
   <img
@@ -17,10 +19,10 @@ const router = useRouter();
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Chivo:ital,wght@1,300&family=Hind:wght@300&display=swap');
- 
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Chivo:ital,wght@1,300&family=Hind:wght@300&display=swap");
+
 h1 {
-  font-family: 'Chivo', sans-serif;
+  font-family: "Chivo", sans-serif;
   font-size: 70px;
 }
 .header-container {
@@ -32,8 +34,8 @@ h1 {
 
 button {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  padding:20px;
-  margin-left: 10px;
+  padding: 20px;
+  margin-right: 40px;
   border-radius: 15px;
   border-color: #d8b9c3;
   background-color: #d8b9c3;
@@ -48,8 +50,6 @@ button:hover {
   color: white;
   filter: drop-shadow(-10px 10px 10px #827397);
 }
-
 </style>
 
-// font-family: 'Archivo Black';
-//font-family: 'Hind', sans-serif;
+// font-family: 'Archivo Black'; //font-family: 'Hind', sans-serif;

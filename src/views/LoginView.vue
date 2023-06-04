@@ -19,7 +19,7 @@ const login = () => {
 <template>
    <img
         id="background"
-        :src="`https://c4.wallpaperflare.com/wallpaper/577/496/4/peanuts-comic-snoopy-charlie-brown-theaters-wallpaper-preview.jpg`"
+        :src="`https://wallpaper-house.com/data/out/10/wallpaper2you_418284.jpg`"
         alt=""
       />
 

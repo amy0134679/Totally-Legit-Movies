@@ -1,32 +1,40 @@
-<script setup>
-import { useStore } from "../store/index.js";
-
-const store = useStore();
-</script>
-
 <template>
-  
-
   <img
-        id="background"
-        :src="`https://img.freepik.com/free-photo/vivid-blurred-colorful-background_58702-2513.jpg?w=1480&t=st=1685753987~exp=1685754587~hmac=73e09f7524ad5ea1f9bbd3510c1294277b6ee526cb3918ae3252c3b5e77efe49`"
-        alt=""
-      />
+    id="background"
+    :src="`https://wallpaper-house.com/data/out/10/wallpaper2you_418284.jpg`"
+    alt=""
+  />
 
-  
   <h1>Your Shopping Cart</h1>
-    <div id = "movie" v-for="movie in store.cart">
-      
-      <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster}`" />
-      <h2>{{ movie.title }}</h2>
-      <h1>{{ movie.budget }}</h1>
-
-    </div>
-
+  <div id="movie" v-for="movie in store.cart" :key="movie.id">
+    <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster}`" />
+    <h2>{{ movie.title }}</h2>
+    <h2>Price: ${{ movie.price }}.00</h2>
+    <h2>Runtime: {{ movie.runtime }} minutes</h2>
+  </div>
 </template>
 
-<style>
+<script setup>
+import { useStore } from "../store/index.js";
+import axios from "axios";
+const store = useStore();
 
+const fetchMovieDetails = async () => {
+  for (const movie of store.cart) {
+    const response = await axios.get(`https://api.themoviedb.org/3/movie/${movie.id}`, {
+      params: {
+        api_key: import.meta.env.VITE_TMDB_API_KEY,
+        language: "en",
+      },
+    });
+    movie.runtime = response.data.runtime;
+  }
+};
+
+fetchMovieDetails();
+</script>
+
+<style>
 #movie {
   display: flex;
   flex-wrap: wrap;
@@ -44,19 +52,20 @@ const store = useStore();
   flex-direction: column;
 }
 
- h1 {
+h1 {
+  padding: 30px;
   margin: auto;
-  font-size: 30px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 50px;
+  font-family: "Chivo", sans-serif;
   color: white;
- }
+}
 
 img {
   align-items: left;
   width: 175px;
-  }
+}
 
-#background{
-  filter:blur(3px);
+#background {
+  filter: blur(3px);
 }
 </style>

@@ -6,10 +6,11 @@ export const useStore = defineStore('store', {
     cart: [],
   }),
   actions: {
-    addToCart(poster, title) {
+    addToCart(poster, title, runtime) {
       this.cart.push({
         poster,
         title,
+        runtime,
       });
       console.log(this.cart);
     }

@@ -15,6 +15,7 @@ const movie = (
   })
 ).data;
 </script>
+
 <template>
   <Teleport to="body">
     <div class="modal-outer-container" @click.self="$emit('toggleModal')">
@@ -29,6 +30,8 @@ const movie = (
           <div class="details-container">
             <h1>{{ movie.title }}</h1>
             <h2>{{ movie.release_date }}</h2>
+            <p>{{ movie.overview }}</p>
+            <h2>Price: ${{ movie.runtime }}.00</h2>
             <h3 @click="store.addToCart(movie.poster_path, movie.title)">
               Add to Cart
             </h3>
@@ -41,8 +44,6 @@ const movie = (
 
 <style scoped>
 #movie {
-  /* display: flex; */
-  /* flex-wrap: wrap; */
   border-radius: 20px;
   margin: auto;
   padding: 50px;
@@ -53,11 +54,9 @@ const movie = (
   margin-top: 500px;
   height: 500px;
   width: 50%;
-  /* display: flex; */
-  /* flex-direction: column; */
 }
+
 .modal-outer-container {
-  /* filter:blur(20px); */
   position: fixed;
   top: 0;
   display: flex;
@@ -65,15 +64,14 @@ const movie = (
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background: #00000099;
-
+  background: #000000a8;
   z-index: 5;
 }
 
 .modal-outer-container .modal-inner-container {
   font-family: "Hind", sans-serif;
   color: white;
-  background-color: rgba(252, 210, 235, 0.25);
+  background-color: rgba(252, 210, 235, 0.3);
   filter: blur(20px);
   filter: drop-shadow(-10px 10px 20px #827397);
   margin-top: 50px;
@@ -84,21 +82,16 @@ const movie = (
 }
 
 .modal-outer-container .modal-inner-container button {
-  filter: blur(20px);
   position: absolute;
   right: 0px;
   padding: 1rem;
   border: none;
-  background: #3b444b;
   font-weight: bold;
-  filter: blur(20px);
 }
 
 .modal-outer-container .modal-inner-container .icon {
-  filter: blur(20px);
   font-size: 1.25rem;
   color: white;
-  filter: blur(20px);
 }
 
 .movie-details {
@@ -119,9 +112,24 @@ h1 {
   border-bottom: 3px solid #dba4b5;
   margin-top: 5px;
   width: 100%;
-  padding: 5px;
+  padding: 2px;
+}
+
+p {
+  padding-top: 0px;
+}
+
+h3 {
+  position: absolute;
+  right: 10px;
+  margin: -30px;
+  border-radius: 10px;
+  margin-right: 20px;
+  font-weight: bold;
+  border: 10px;
+  background-color: #dba4b5;
+  padding: 15px;
 }
 </style>
 
-// add onclick for the poster to a trailer
-// add description
+// add onclick for the poster to a trailer // add description
