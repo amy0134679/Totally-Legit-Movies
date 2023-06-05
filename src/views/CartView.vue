@@ -18,13 +18,13 @@
         </div>
       </div>
     </div>
-
+    
     <div id="order-summary">
       <h2>Order Summary</h2>
       <div v-for="movie in store.cart">
         <div class="summary-item">
           <h3 class="title">{{ movie.title }}</h3>
-          <h3 class="price">Price: ${{ movie.runtime }}.00</h3>
+          <h3 class="price">${{ movie.runtime }}.00</h3>
         </div>
       </div>
       <h2 id="total-cost">Total: ${{ calculateTotal() }}.00</h2>
@@ -42,6 +42,10 @@ const calculateTotal = () => {
 </script>
 
 <style>
+.summary-item {
+  border-bottom: 3px solid #dba4b5;
+}
+
 h1 {
   padding: 30px;
   margin: auto;
@@ -90,13 +94,14 @@ img {
   background-color: rgba(252, 210, 235, 0.25);
   padding: 20px;
   border-radius: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Hind", sans-serif;
   color: white;
   filter: drop-shadow(-10px 10px 20px #827397);
 }
 
 h2 {
   font-size: 30px;
+  margin-bottom: 1px;
   padding-left: 15px;
 }
 

@@ -30,7 +30,11 @@ const movie = (
             <h2>{{ movie.release_date }}</h2>
             <p>{{ movie.overview }}</p>
             <h2>Price: ${{ movie.runtime }}.00</h2>
-            <h3 @click="store.addToCart(movie.poster_path, movie.title, movie.runtime)">
+            <h3
+              @click="
+                store.addToCart(movie.poster_path, movie.title, movie.runtime)
+              "
+            >
               ADD TO CART
             </h3>
           </div>
@@ -73,7 +77,7 @@ const movie = (
   filter: drop-shadow(-10px 10px 20px #827397);
   margin-top: 50px;
   min-height: 400px;
-  width: 50%;
+  width: 60%;
   padding: 30px;
   border-radius: 10px;
 }
@@ -86,7 +90,7 @@ const movie = (
   font-weight: bold;
 }
 
-.modal-outer-container .modal-inner-container .icon {
+.modal-outer-container .modal-inner-container {
   font-size: 1.25rem;
   color: white;
 }
@@ -98,9 +102,13 @@ const movie = (
 .poster-container {
   margin-right: 20px;
 }
-
+.poster-container {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
 img {
-  width: 250px;
+  width: 300px;
 }
 
 h1 {
@@ -118,10 +126,8 @@ p {
 
 h3 {
   cursor: pointer;
-  position: absolute;
+  position: relative;
   right: 10px;
-  margin: -30px;
-  margin-top: -80px;
   border-radius: 10px;
   margin-right: 20px;
   font-weight: bold;
@@ -136,11 +142,10 @@ h3:hover {
   filter: drop-shadow(-10px 10px 10px #827397);
 }
 
-  button {
-    font-size: 20px;
-    padding-right: 15px;
-    color:rgb(255, 255, 255);
-    background-color:rgba(0, 0, 0, 0); 
-  }
+button {
+  font-size: 20px;
+  padding-right: 15px;
+  color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0);
+}
 </style>
-

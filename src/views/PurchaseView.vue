@@ -1,24 +1,8 @@
-<script setup>
-import { ref } from "vue";
-import Modal from "../components/Modal.vue";
-import { useStore } from "../store/index.js";
-import { useRouter } from "vue-router";
-
-const router = useRouter();
-const showModal = ref(false);
-const selectedRecordId = ref(0);
-const store = useStore();
-
-const toggleModal = (id) => {
-  showModal.value = !showModal.value;
-  selectedRecordId.value = id;
-};
-</script>
 <template>
   <div>
     <img
       id="background"
-      :src="`https://img.freepik.com/free-vector/blue-pink-halftone-background_53876-99557.jpg?w=1480&t=st=1685754405~exp=1685755005~hmac=dabe7a36b79a0fa6348b82fb1eb6df8a5bef41a98be8992cf0cf7871f91b849f`"
+      :src="`https://images.pexels.com/photos/7130555/pexels-photo-7130555.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`"
       alt=""
     />
     <div class="header-container">
@@ -37,6 +21,23 @@ const toggleModal = (id) => {
   <Modal v-if="showModal" :id="selectedRecordId" @toggleModal="toggleModal()" />
 </template>
 
+<script setup>
+import { ref } from "vue";
+import Modal from "../components/Modal.vue";
+import { useStore } from "../store/index.js";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const showModal = ref(false);
+const selectedRecordId = ref(0);
+const store = useStore();
+
+const toggleModal = (id) => {
+  showModal.value = !showModal.value;
+  selectedRecordId.value = id;
+};
+</script>
+
 <style scoped>
 .header-container {
   padding-bottom: 20px;
@@ -46,7 +47,7 @@ const toggleModal = (id) => {
 }
 
 button:hover {
-  background-color: #dba4b5;
+  background-color: #afc6ffa8;
   color: white;
   filter: drop-shadow(-10px 10px 10px #827397);
 }
@@ -55,20 +56,14 @@ button {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 20px;
   border-radius: 10px;
-  border-color: #d8b9c3;
-  background-color: #d8b9c3;
+  border-color: #afc6ff;
+  background-color: #afc6ff;
   color: white;
   font-size: 20px;
   width: 150px;
   height: 70px;
   cursor: pointer;
   filter: drop-shadow(-10px 10px 20px #827397);
-}
-
-.button-container button:hover {
-  background-color: #dba4b5;
-  color: white;
-  filter: drop-shadow(-10px 10px 10px #827397);
 }
 
 .tiles {
