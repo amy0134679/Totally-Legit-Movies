@@ -5,15 +5,15 @@
     <div id="slideshow">
       <div class="slide-wrapper">
         <div class="slide">
-          <h1 class="slide-number">Welcome to Totally Legit Movie Site, <br> the ultimate destination for all
+          <h1 class="slide-number1">Welcome to Totally Legit Movie Site, <br> the ultimate destination for all
         your movie cravings!</h1>
         </div>
         <div class="slide">
-          <h1 class="slide-number">Get ready to immerse yourself in a world of
+          <h1 class="slide-number2">Get ready to immerse yourself in a world of
         cinematic wonders <br> as you explore our comprehensive movie website.</h1>
         </div>
         <div class="slide">
-          <h1 class="slide-number">Whether you're a die-hard film enthusiast, a casual moviegoer,<br>or just
+          <h1 class="slide-number3">Whether you're a die-hard film enthusiast, a casual moviegoer,<br>or just
         looking for a perfect film to unwind, we've got you covered.</h1>
         </div>
       </div>
@@ -24,7 +24,7 @@
 
 <style scoped>
 @keyframes slide {
-  33% {
+  20% {
     margin-left: 0px;
   }
   66% {

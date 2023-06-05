@@ -9,8 +9,6 @@ const movie = (
   await axios.get(`https://api.themoviedb.org/3/movie/${props.id}`, {
     params: {
       api_key: import.meta.env.VITE_TMDB_API_KEY,
-      region: "US",
-      language: "en",
     },
   })
 ).data;
@@ -33,7 +31,7 @@ const movie = (
             <p>{{ movie.overview }}</p>
             <h2>Price: ${{ movie.runtime }}.00</h2>
             <h3 @click="store.addToCart(movie.poster_path, movie.title, movie.runtime)">
-              Add to Cart
+              ADD TO CART
             </h3>
           </div>
         </div>
@@ -52,7 +50,6 @@ const movie = (
   background-color: rgba(252, 210, 235, 0.25);
   filter: drop-shadow(-10px 10px 20px #827397);
   margin-top: 500px;
-  height: 500px;
   width: 50%;
 }
 
@@ -62,8 +59,8 @@ const movie = (
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: #000000a8;
   z-index: 5;
 }
@@ -75,7 +72,7 @@ const movie = (
   filter: blur(20px);
   filter: drop-shadow(-10px 10px 20px #827397);
   margin-top: 50px;
-  height: 400px;
+  min-height: 400px;
   width: 50%;
   padding: 30px;
   border-radius: 10px;
@@ -120,9 +117,11 @@ p {
 }
 
 h3 {
+  cursor: pointer;
   position: absolute;
   right: 10px;
   margin: -30px;
+  margin-top: -80px;
   border-radius: 10px;
   margin-right: 20px;
   font-weight: bold;
@@ -130,6 +129,18 @@ h3 {
   background-color: #dba4b5;
   padding: 15px;
 }
+
+h3:hover {
+  background-color: #dba4b5ce;
+  color: white;
+  filter: drop-shadow(-10px 10px 10px #827397);
+}
+
+  button {
+    font-size: 20px;
+    padding-right: 15px;
+    color:rgb(255, 255, 255);
+    background-color:rgba(0, 0, 0, 0); 
+  }
 </style>
 
-// add onclick for the poster to a trailer // add description

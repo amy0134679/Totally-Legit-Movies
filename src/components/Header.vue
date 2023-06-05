@@ -20,9 +20,13 @@ const router = useRouter();
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Chivo:ital,wght@1,300&family=Hind:wght@300&display=swap");
 
 h1 {
+  padding: 30px;
+  margin: auto;
+  font-size: 50px;
   font-family: "Chivo", sans-serif;
-  font-size: 70px;
+  color: white;
 }
+
 .header-container {
   font-size: 40px;
   display: flex;
@@ -31,7 +35,7 @@ h1 {
 }
 
 button {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Chivo", sans-serif;
   padding: 20px;
   margin-right: 40px;
   border-radius: 15px;
@@ -49,5 +53,3 @@ button:hover {
   filter: drop-shadow(-10px 10px 10px #827397);
 }
 </style>
-
-// font-family: 'Archivo Black'; //font-family: 'Hind', sans-serif;
