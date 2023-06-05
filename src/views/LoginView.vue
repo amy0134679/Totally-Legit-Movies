@@ -1,17 +1,3 @@
-<template>
-  <img
-    id="background"
-    :src="`https://wallpaper-house.com/data/out/10/wallpaper2you_418284.jpg`"
-    alt=""
-  />
-  <form class="login-container" @submit.prevent="login()">
-    <h2>Sign In</h2>
-    <input type="text" placeholder="username" v-model="username" />
-    <input type="password" placeholder="password" v-model="password" />
-    <input type="submit" id="button" value="Login" />
-  </form>
-</template>
-
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
@@ -29,6 +15,21 @@ const login = () => {
   console.log(username.value, password.value);
 };
 </script>
+
+<template>
+  <img
+    id="background"
+    :src="`https://wallpaper-house.com/data/out/10/wallpaper2you_418284.jpg`"
+    alt=""
+  />
+  <form class="login-container" @submit.prevent="login()">
+    <h2>Sign In</h2>
+    <input type="text" placeholder="username" v-model="username" />
+    <input type="password" placeholder="password" v-model="password" />
+    <input type="submit" id="button" value="Login" />
+  </form>
+</template>
+
 
 <style>
 #background {

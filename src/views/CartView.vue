@@ -1,3 +1,12 @@
+<script setup>
+import { useStore } from "../store/index.js";
+const store = useStore();
+
+const calculateTotal = () => {
+  return store.cart.reduce((total, movie) => total + movie.runtime, 0);
+};
+</script>
+
 <template>
   <img
     id="background"
@@ -18,7 +27,7 @@
         </div>
       </div>
     </div>
-    
+
     <div id="order-summary">
       <h2>Order Summary</h2>
       <div v-for="movie in store.cart">
@@ -32,16 +41,7 @@
   </div>
 </template>
 
-<script setup>
-import { useStore } from "../store/index.js";
-const store = useStore();
-
-const calculateTotal = () => {
-  return store.cart.reduce((total, movie) => total + movie.runtime, 0);
-};
-</script>
-
-<style>
+<style scoped>
 .summary-item {
   border-bottom: 3px solid #dba4b5;
 }

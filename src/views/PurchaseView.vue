@@ -1,3 +1,20 @@
+<script setup>
+import { ref } from "vue";
+import Modal from "../components/Modal.vue";
+import { useStore } from "../store/index.js";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const showModal = ref(false);
+const selectedRecordId = ref(0);
+const store = useStore();
+
+const toggleModal = (id) => {
+  showModal.value = !showModal.value;
+  selectedRecordId.value = id;
+};
+</script>
+
 <template>
   <div>
     <img
@@ -20,23 +37,6 @@
   </div>
   <Modal v-if="showModal" :id="selectedRecordId" @toggleModal="toggleModal()" />
 </template>
-
-<script setup>
-import { ref } from "vue";
-import Modal from "../components/Modal.vue";
-import { useStore } from "../store/index.js";
-import { useRouter } from "vue-router";
-
-const router = useRouter();
-const showModal = ref(false);
-const selectedRecordId = ref(0);
-const store = useStore();
-
-const toggleModal = (id) => {
-  showModal.value = !showModal.value;
-  selectedRecordId.value = id;
-};
-</script>
 
 <style scoped>
 .header-container {
