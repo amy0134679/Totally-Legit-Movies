@@ -52,12 +52,6 @@ const registerViaGoogle = async () => {
 </script>
 
 <template>
-  <img
-    id="background"
-    :src="`https://wallpaper-house.com/data/out/10/wallpaper2you_418284.jpg`"
-    alt=""
-  />
-
   <div class="auth-container">
     <div>
       <h1>Register via Google</h1>
@@ -90,53 +84,15 @@ const registerViaGoogle = async () => {
   </div>
 </template>
 
-<style>
-#background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
+<style scoped>
+.auth-container {
+  display: flex;
+  gap: 5rem;
 }
-
-.login-container {
-  border-radius: 20px;
-  margin: auto;
-  padding: 40px;
-  font-family: "Archivo Black", sans-serif;
-  color: white;
-  align-items: center;
-  background-color: rgba(252, 210, 235, 0.25);
-  filter: drop-shadow(-10px 10px 20px #827397);
-  margin-top: 200px;
-  height: 400px;
-  width: 30%;
+.setup,
+.login {
   display: flex;
   flex-direction: column;
-}
-
-input {
-  padding: 15px;
-  margin: 10px;
-  border-color: rgba(0, 0, 0, 0);
-  border-radius: 5px;
-}
-
-#button {
-  font-family: "Archivo Black", sans-serif;
-  margin-right: 10px;
-  border-radius: 5px;
-  background-color: #d8b9c3;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  filter: drop-shadow(-10px 10px 20px #827397);
-}
-
-#button:hover {
-  background-color: #dba4b5;
-  color: white;
-  filter: drop-shadow(-10px 10px 10px #827397);
+  gap: 1rem;
 }
 </style>

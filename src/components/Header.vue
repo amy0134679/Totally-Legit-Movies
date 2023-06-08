@@ -7,7 +7,7 @@ const router = useRouter();
 <template>
   <div class="header-container">
     <h1>Totally Legit Movie Site</h1>
-    <button @click="router.push('/login')">Login</button>
+    <button @click="router.push('/purchase')">Login</button>
   </div>
   <img
     id="background"
