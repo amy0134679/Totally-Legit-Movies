@@ -3,6 +3,7 @@ import axios from "axios";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import Modal from "../components/Modal.vue";
+
 const router = useRouter();
 const genre = ref(28);
 const search = ref("");
