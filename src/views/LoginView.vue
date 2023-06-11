@@ -8,6 +8,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signInWithEmailAndPassword,
+  GithubAuthProvider
 } from "firebase/auth";
 import { getDoc, doc } from "@firebase/firestore";
 
@@ -18,7 +19,7 @@ const passwordOne = ref("");
 const passwordTwo = ref("");
 const registerViaEmail = async () => {
   if (passwordOne.value !== passwordTwo.value) {
-    alert("Brozzzzz..... Yer Paswerdz not coolz!");
+    alert("Your username or password is incorrect DUMBASS");
     return;
   }
   const { user } = await createUserWithEmailAndPassword(
@@ -59,28 +60,33 @@ const registerViaGoogle = async () => {
     alt=""
   />
   <div class="auth-container">
-    <div class="sign-in-column" >
-      <h1>Register via Google</h1>
-      <button @click="registerViaGoogle()">Google</button>
+    <div class="sign-in-column">
+      <div>
+        <h1>Register via <br> Google</h1>
+        <button @click="registerViaGoogle()">Google</button>
+      </div>
     </div>
     <div class="sign-in-column">
-      <h1>Register via Email</h1>
-      <form class="setup" @submit.prevent="registerViaEmail()">
-        <input v-model="email" type="email" placeholder="email" />
-        <input
-          v-model="passwordOne"
-          type="password"
-          placeholder="Enter Password"
-        />
-        <input
-          v-model="passwordTwo"
-          type="password"
-          placeholder="Re-enter Password"
-        />
-        <input type="submit" value="Register" />
-      </form>
-      <hr />
-      <h1>Login via Email</h1>
+      <div>
+        <h1>Register via <br>Email</h1>
+        <form class="setup" @submit.prevent="registerViaEmail()">
+          <input v-model="email" type="email" placeholder="email" />
+          <input
+            v-model="passwordOne"
+            type="password"
+            placeholder="Enter Password"
+          />
+          <input
+            v-model="passwordTwo"
+            type="password"
+            placeholder="Re-enter Password"
+          />
+          <input type="submit" value="Register" />
+        </form>
+      </div>
+    </div>
+    <div>
+      <h1>Login via <br>Email</h1>
       <form class="login" @submit.prevent="loginViaEmail()">
         <input v-model="email" type="email" placeholder="Email" />
         <input v-model="passwordOne" type="password" placeholder="Password" />
@@ -92,7 +98,8 @@ const registerViaGoogle = async () => {
 
 <style scoped>
 .sign-in-column {
-  display:flex;
+  display: flex;
+  padding: 6%;
 }
 #background {
   position: fixed;
@@ -110,7 +117,8 @@ input {
   border-radius: 5px;
 }
 #button {
-  font-family: 'Archivo Black', sans-serif;  margin-right: 10px;
+  font-family: "Archivo Black", sans-serif;
+  margin-right: 10px;
   border-radius: 5px;
   background-color: #d8b9c3;
   color: white;
@@ -134,6 +142,7 @@ input {
   display: flex;
   flex-direction: row;
 }
+
 .setup,
 .login {
   display: flex;

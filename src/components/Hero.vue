@@ -48,7 +48,7 @@
 
 .slide {
   float: left;
-  height: 400px;
+  height: 80vh;
   width: 100vw;
 }
 
@@ -79,5 +79,9 @@ h1 {
   font-size: 30px;
   padding: 2rem;
   width: 100%;
+}
+
+.hero-container {
+  height: 50vh;
 }
 </style>

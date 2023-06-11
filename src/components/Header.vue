@@ -9,11 +9,6 @@ const router = useRouter();
     <h1>Totally Legit Movie Site</h1>
     <button @click="router.push('/login')">Login</button>
   </div>
-  <img
-    id="background"
-    :src="`https://images.pexels.com/photos/7130555/pexels-photo-7130555.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`"
-    alt=""
-  />
 </template>
 
 <style scoped>
@@ -28,6 +23,8 @@ h1 {
 }
 
 .header-container {
+  background-image: url("https://images.pexels.com/photos/7130555/pexels-photo-7130555.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  height: 20vh;
   font-size: 40px;
   display: flex;
   justify-content: space-between;
