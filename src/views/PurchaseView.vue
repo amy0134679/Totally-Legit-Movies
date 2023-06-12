@@ -3,6 +3,7 @@ import axios from "axios";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import Modal from "../components/Modal.vue";
+
 const router = useRouter();
 const genre = ref(16);
 const search = ref("");
@@ -35,22 +36,23 @@ const getTMDBData = async (url, options, page) => {
 </script>
 
 <template>
+
   <img
     id="background"
-    :src="`https://wallpapercave.com/wp/wp3354898.jpg`"/>
-     <!-- `https://wallpaperaccess.com/full/340434.png`  -->
-  
+    :src="`https://wallpapercave.com/wp/wp3354898.jpg`"/>  
   <div class="header-container">
     <h1>Browse Trending Movies</h1>
     <div>
       <div class="controls">
         <div>
           <input
+            id="search-bar"
             type="search"
-            placeholder="Enter search items"
+            placeholder="Search for a Movie"
             v-model="search"
           />
           <button
+          id = "search-button"
             @click="
               getTMDBData('https://api.themoviedb.org/3/search/movie', {
                 query: search,
@@ -70,18 +72,19 @@ const getTMDBData = async (url, options, page) => {
             <option value="99">Documentary</option>
           </select>
           <button
+            id = "selector-button"
             @click="
               getTMDBData('https://api.themoviedb.org/3/discover/movie', {
                 with_genres: genre,
               })
             "
           >
-            Get
+            Sort
           </button>
-          <button @click="router.push('/cart')">Cart</button>
         </div>
       </div>
     </div>
+    <button id = "cart-button" @click="router.push('/cart')"> Cart</button>
     <div class="pagination">
       <button
         @click="
@@ -125,15 +128,44 @@ const getTMDBData = async (url, options, page) => {
 </template>
 
 <style scoped>
+#cart-button {
+  background-color: #d4bc6d;
+  border-color: #d4bc6dc4;
+  background-image: url('https://icons8.com/icon/85080/shopping-cart');
+}
+
+
+#selector-button {
+  background-color: rgba(244, 210, 252, 0.75);
+  border-color: rgba(240, 199, 249, 0.466);
+}
+
+#selector-button:hover{
+  background-color: rgba(240, 199, 249, 0.591);
+}
+
+.pagination:hover {
+  background-color: rgba(244, 210, 252, 0.75);
+}
+
+#search-bar {
+  border-radius: 10px;
+  background-color: #afc6ffd6;
+  color:white;
+  padding: 1rem;
+  font-family: "Chivo", sans-serif;
+  border-color: #afc6ff;
+}
+
 #selector-box {
   border-radius: 10px;
   border-color: rgba(0, 0, 0, 0);
   padding: 1rem;
   font-size: 1rem;
-  background-color: rgba(244, 210, 252, 0.75);
+  background-color: rgba(244, 210, 252, 0.521);
   color: white;
   filter: drop-shadow(-10px 10px 20px #827397);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Chivo", sans-serif;
 }
 
 h1 {
@@ -149,7 +181,7 @@ button:hover {
 }
 
 button {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Chivo", sans-serif;
   padding: 5px;
   border-radius: 10px;
   border-color: #afc6ff;
@@ -219,7 +251,10 @@ img {
   bottom: 20px;
   gap: 1rem;
   align-self: center;
-  background-color: rgba(252, 210, 235, 0.75);
+  filter: drop-shadow(-10px 10px 20px #827397);
+  font-family: "Chivo", sans-serif;
+  color: white;
+  background-color: rgba(244, 210, 252, 0.5);
 }
 .controls {
   display: flex;
