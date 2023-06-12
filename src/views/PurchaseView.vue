@@ -10,7 +10,7 @@ const search = ref("");
 const movies = ref(null);
 const page = ref(1);
 const currentURL = ref("");
-const totalPages = ref(0);
+const totalPages = ref("------");
 const showModal = ref(false);
 const selectedRecordId = ref(0);
 const toggleModal = (id) => {
@@ -40,10 +40,10 @@ const getTMDBData = async (url, options, page) => {
   <img
     id="background"
     :src="`https://wallpapercave.com/wp/wp3354898.jpg`"/>  
-  <div class="header-container">
+  <div class="header-container header-items">
     <h1>Browse Trending Movies</h1>
-    <div>
-      <div class="controls">
+    <div class="header-items">
+      <div class="controls" >
         <div>
           <input
             id="search-bar"
@@ -128,6 +128,13 @@ const getTMDBData = async (url, options, page) => {
 </template>
 
 <style scoped>
+/* .controls {
+display:block;
+} */
+.header-items {
+display: grid;
+}
+
 #cart-button {
   background-color: #d4bc6d;
   border-color: #d4bc6dc4;
@@ -171,7 +178,8 @@ const getTMDBData = async (url, options, page) => {
 h1 {
   color: aliceblue;
   font-family: "Chivo", sans-serif;
-  font-size: 50px;
+  font-size: 40px;
+  padding:5px;
 }
 
 button:hover {
@@ -236,13 +244,13 @@ img:hover {
 }
 
 img {
-  width: 250px;
+  width: 220px;
 }
 
 .pagination {
   z-index: 1;
-  left: 35%;
-  right: 35%;
+  left: 32%;
+  right: 32%;
   text-align-last: center;
   padding: 20px;
   border-radius: 10px;
