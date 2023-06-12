@@ -56,10 +56,11 @@ const registerViaGithub = async () => {
 
 const registerViaGoogle = async () => {
   const provider = new GoogleAuthProvider();
+  console.log("working")
   const { user } = await signInWithPopup(auth, provider);
   store.user = user;
-  // const { cart } = (await getDoc(doc(firestore, "carts", user.email))).data();
-  // store.cart = cart;
+  const { cart } = (await getDoc(doc(firestore, "carts", user.email))).data();
+  store.cart = cart;
   router.push("/purchase");
 };
 </script>
