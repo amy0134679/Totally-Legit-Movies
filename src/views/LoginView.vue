@@ -46,10 +46,15 @@ const loginViaEmail = async () => {
 };
 const registerViaGithub = async () => {
   const provider = new GithubAuthProvider();
-  const { user } = await signInWithPopup(auth, provider);
+  // const { user } = await signInWithPopup(auth, provider);
   console.log("github signin working")
-  store.user = user;
-  // const { cart } = (await getDoc(doc(firestore, "carts", user.email))).data();
+  // store.user = user;
+  signInWithPopup(auth, provider)
+  .then((result) => {
+    const usertest = result.user;
+    console.log(usertest)
+})
+  // const cart  = (await getDoc(doc(firestore, "carts", user.email))).data();
   // store.cart = cart;
   router.push("/purchase");
 };
@@ -59,7 +64,7 @@ const registerViaGoogle = async () => {
   console.log("working")
   const { user } = await signInWithPopup(auth, provider);
   store.user = user;
-  const { cart } = (await getDoc(doc(firestore, "carts", user.email))).data();
+  const cart  = (await getDoc(doc(firestore, "carts", user.email))).data();
   store.cart = cart;
   router.push("/purchase");
 };
