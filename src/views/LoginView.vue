@@ -4,11 +4,12 @@ import { useRouter } from "vue-router";
 import { useStore } from "../store";
 import { auth, firestore } from "../firebase";
 import {
+  getAuth,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
   signInWithEmailAndPassword,
-  GithubAuthProvider
+  GithubAuthProvider,
 } from "firebase/auth";
 import { getDoc, doc } from "@firebase/firestore";
 
@@ -43,6 +44,16 @@ const loginViaEmail = async () => {
     console.log(error);
   }
 };
+const registerViaGithub = async () => {
+  const provider = new GithubAuthProvider();
+  const { user } = await signInWithPopup(auth, provider);
+  console.log("github signin working")
+  store.user = user;
+  // const { cart } = (await getDoc(doc(firestore, "carts", user.email))).data();
+  // store.cart = cart;
+  router.push("/purchase");
+};
+
 const registerViaGoogle = async () => {
   const provider = new GoogleAuthProvider();
   const { user } = await signInWithPopup(auth, provider);
@@ -63,7 +74,11 @@ const registerViaGoogle = async () => {
     <div class="sign-in-column">
       <div>
         <h1>Register via <br> Google</h1>
-        <button @click="registerViaGoogle()">Google</button>
+        <button id="google-button" @click="registerViaGoogle()">Google</button>
+      </div>
+      <div>
+        <h1>Register via <br> Github</h1>
+        <button  @click="registerViaGithub()">Github</button>
       </div>
     </div>
     <div class="sign-in-column">
@@ -133,7 +148,6 @@ input {
   padding: 50px;
   font-family: "Archivo Black", sans-serif;
   color: white;
-  align-items: center;
   background-color: rgba(252, 210, 235, 0.25);
   filter: drop-shadow(-10px 10px 20px #827397);
   margin-top: 200px;
