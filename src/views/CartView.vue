@@ -5,6 +5,7 @@ const store = useStore();
 const calculateTotal = () => {
   return store.cart.reduce((total, movie) => total + movie.runtime, 0);
 };
+
 </script>
 
 <template>
@@ -16,18 +17,18 @@ const calculateTotal = () => {
 
   <div id="cart-container">
     <div id="movie-list">
-      <h1>Your Shopping Cart</h1>
-      <div class="movie" v-for="movie in store.cart">
-        <div id="column-left">
-          <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster}`" />
-        </div>
-        <div id="column-left">
-          <h2>{{ movie.title }}</h2>
-          <h2>Price: ${{ movie.runtime }}.00</h2>
-        </div>
+    <h1>Your Shopping Cart</h1>
+    <div class="movie" v-for="movie in store.cart" :key="movie.id">
+      <div id="column-left">
+        <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster}`" />
+      </div>
+      <div id="column-left">
+        <h2>{{ movie.title }}</h2>
+        <h2>Price: ${{ movie.runtime }}.00</h2>
+        <button @click="removeFromCart(movie.id)">Remove</button>
       </div>
     </div>
-
+  </div>
     <div id="order-summary">
       <h2>Order Summary</h2>
       <div v-for="movie in store.cart">
@@ -47,7 +48,6 @@ const calculateTotal = () => {
   height: 100vh;
   width: 100vw;
   z-index: -3;
-
 }
 .summary-item {
   border-bottom: 3px solid #dba4b5;

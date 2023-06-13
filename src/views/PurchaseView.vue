@@ -36,14 +36,12 @@ const getTMDBData = async (url, options, page) => {
 </script>
 
 <template>
-
-  <img
-    id="background"
-    :src="`https://wallpapercave.com/wp/wp3354898.jpg`"/>  
+  <img id="background" :src="`https://wallpapercave.com/wp/wp3354898.jpg`" />
   <div class="header-container header-items">
     <h1>Browse Trending Movies</h1>
+    <p id="divider">⋆⁺｡˚⋆˙‧₊✩₊‧˙⋆˚｡⁺⋆⁺｡˚⋆˙‧₊✩₊‧˙⋆˚｡⁺⋆⁺｡˚⋆˙‧₊✩₊‧˙⋆˚｡⁺⋆⁺｡˚⋆˙‧₊✩₊‧˙⋆˚｡⁺⋆⁺｡˚⋆˙‧₊✩₊‧˙⋆˚｡⁺⋆⁺｡˚⋆˙‧₊✩₊‧˙⋆˚｡⁺⋆</p>
     <div class="header-items">
-      <div class="controls" >
+      <div class="controls">
         <div>
           <input
             id="search-bar"
@@ -52,7 +50,7 @@ const getTMDBData = async (url, options, page) => {
             v-model="search"
           />
           <button
-          id = "search-button"
+            id="search-button"
             @click="
               getTMDBData('https://api.themoviedb.org/3/search/movie', {
                 query: search,
@@ -72,7 +70,7 @@ const getTMDBData = async (url, options, page) => {
             <option value="99">Documentary</option>
           </select>
           <button
-            id = "selector-button"
+            id="selector-button"
             @click="
               getTMDBData('https://api.themoviedb.org/3/discover/movie', {
                 with_genres: genre,
@@ -82,9 +80,10 @@ const getTMDBData = async (url, options, page) => {
             Sort
           </button>
         </div>
+        <button id="cart-button" @click="router.push('/cart')">Cart</button>
       </div>
     </div>
-    <button id = "cart-button" @click="router.push('/cart')"> Cart</button>
+
     <div class="pagination">
       <button
         @click="
@@ -128,26 +127,60 @@ const getTMDBData = async (url, options, page) => {
 </template>
 
 <style scoped>
-/* .controls {
-display:block;
+ /* makes stars sparkle but website too slow ): */
+/* @-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 40px #d4ce89, 0 0 60px #e5b30f;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 60px #d8bbf4eb, 0 0 70px #a98beb;
+  }
 } */
+
+#divider {
+  text-align:justify;
+  /* animation: glow 2s ease-in-out infinite alternate; */
+  margin-top: -35px;
+  margin-bottom: -20px;
+  color: #d4bc6d;
+  font-size: 30px;
+  /* filter: drop-shadow(20px 20px 500px #d4bc6d); */
+}
+.controls {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 100%;
+  padding: 25px ;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
+}
+
 .header-items {
-display: grid;
+  display: fixed;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 #cart-button {
   background-color: #d4bc6d;
   border-color: #d4bc6dc4;
-  background-image: url('https://icons8.com/icon/85080/shopping-cart');
+  background-image: url("https://icons8.com/icon/85080/shopping-cart");
 }
-
 
 #selector-button {
   background-color: rgba(244, 210, 252, 0.75);
   border-color: rgba(240, 199, 249, 0.466);
 }
 
-#selector-button:hover{
+#selector-button:hover {
   background-color: rgba(240, 199, 249, 0.591);
 }
 
@@ -158,7 +191,7 @@ display: grid;
 #search-bar {
   border-radius: 10px;
   background-color: #afc6ffd6;
-  color:white;
+  color: white;
   padding: 1rem;
   font-family: "Chivo", sans-serif;
   border-color: #afc6ff;
@@ -178,8 +211,8 @@ display: grid;
 h1 {
   color: aliceblue;
   font-family: "Chivo", sans-serif;
-  font-size: 40px;
-  padding:5px;
+  font-size: 45px;
+  padding: 5px;
 }
 
 button:hover {

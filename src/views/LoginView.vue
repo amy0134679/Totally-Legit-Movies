@@ -4,7 +4,6 @@ import { useRouter } from "vue-router";
 import { useStore } from "../store";
 import { auth, firestore } from "../firebase";
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
@@ -18,6 +17,7 @@ const router = useRouter();
 const email = ref("");
 const passwordOne = ref("");
 const passwordTwo = ref("");
+
 const registerViaEmail = async () => {
   if (passwordOne.value !== passwordTwo.value) {
     alert("Your username or password is incorrect DUMBASS");
@@ -26,7 +26,7 @@ const registerViaEmail = async () => {
   const { user } = await createUserWithEmailAndPassword(
     auth,
     email.value,
-    passwordTwo.value
+    passwordOne.value
   );
   store.user = user;
   router.push("/purchase");
@@ -46,26 +46,25 @@ const loginViaEmail = async () => {
 };
 const registerViaGithub = async () => {
   const provider = new GithubAuthProvider();
-  // const { user } = await signInWithPopup(auth, provider);
   console.log("github signin working")
-  // store.user = user;
   signInWithPopup(auth, provider)
   .then((result) => {
     const usertest = result.user;
     console.log(usertest)
 })
-  // const cart  = (await getDoc(doc(firestore, "carts", user.email))).data();
-  // store.cart = cart;
+
   router.push("/purchase");
 };
 
 const registerViaGoogle = async () => {
   const provider = new GoogleAuthProvider();
-  console.log("working")
   const { user } = await signInWithPopup(auth, provider);
   store.user = user;
-  const cart  = (await getDoc(doc(firestore, "carts", user.email))).data();
-  store.cart = cart;
+  const cartDoc = await getDoc(doc(firestore, "carts", user.email));
+  if (cartDoc.exists()) {
+    const cartData = cartDoc.data();
+    store.cart = cartData.cart;
+  }
   router.push("/purchase");
 };
 </script>
@@ -169,4 +168,20 @@ input {
   flex-direction: column;
   gap: 1rem;
 }
+
+
+ /* andy
+  const registerViaGoogle = async () => {
+  const provider = new GoogleAuthProvider();
+  console.log("working")
+  const { user } = await signInWithPopup(auth, provider);
+  store.user = user;
+  const cart  = (await getDoc(doc(firestore, "carts", user.email))).data();
+  store.cart = cart;
+  router.push("/purchase");
+}; */
+
+
+
 </style>
+

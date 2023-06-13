@@ -1,19 +1,21 @@
 import { defineStore } from 'pinia'
+import { firestore } from '../firebase';
+import { setDoc, doc } from 'firebase/firestore';
 
 export const useStore = defineStore('store', {
   state: () => ({
-    movies: [],
+    user: null,
     cart: [],
   }),
   actions: {
-    addToCart(poster, title, runtime) {
+    async addToCart(poster, title, runtime) {
       this.cart.push({
         poster,
         title,
-        runtime,
+        runtime
       });
-      console.log(this.cart);
+
+      await setDoc(doc(firestore, "carts", this.user.email), { cart: this.cart });
     }
   }
 })
-
