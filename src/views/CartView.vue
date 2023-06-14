@@ -1,19 +1,3 @@
-<script setup>
-import { useStore } from "../store/index.js";
-const store = useStore();
-
-const calculateTotal = () => {
-  return store.cart.reduce((total, movie) => total + movie.runtime, 0);
-};
-
-const remove = () => {
-const index=store.cart.indexOf(movie.id);
-console.log(indexOf(movie.id));
-store.removeFromCart(index);
-};
-
-</script>
-
 <template>
   <img
     id="background"
@@ -23,18 +7,18 @@ store.removeFromCart(index);
 
   <div id="cart-container">
     <div id="movie-list">
-    <h1>Your Shopping Cart</h1>
-    <div class="movie" v-for="movie in store.cart" :key="movie.id">
-      <div id="column-left">
-        <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster}`" />
-      </div>
-      <div id="column-left">
-        <h2>{{ movie.title }}</h2>
-        <h2>Price: ${{ movie.runtime }}.00</h2>
-        <button @click="remove(movie.id)">Remove</button>
+      <h1>Your Shopping Cart</h1>
+      <div class="movie" v-for="movie in store.cart" :key="movie.id">
+        <div id="column-left">
+          <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster}`" />
+        </div>
+        <div id="column-left">
+          <h2>{{ movie.title }}</h2>
+          <h2>Price: ${{ movie.runtime }}.00</h2>
+          <button @click="remove(movie)">Remove</button>
+        </div>
       </div>
     </div>
-  </div>
     <div id="order-summary">
       <h2>Order Summary</h2>
       <div v-for="movie in store.cart">
@@ -47,6 +31,22 @@ store.removeFromCart(index);
     </div>
   </div>
 </template>
+
+<script setup>
+import { useStore } from "../store/index.js";
+const store = useStore();
+
+const calculateTotal = () => {
+  return store.cart.reduce((total, movie) => total + movie.runtime, 0);
+};
+
+const remove = (movie) => {
+  const index = store.cart.findIndex(item => item.id === movie.id);
+  if (index > -1) {
+    store.removeFromCart(index);
+  }
+};
+</script>
 
 <style scoped>
 #background {
