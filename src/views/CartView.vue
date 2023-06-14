@@ -136,4 +136,30 @@ h3 {
 .price {
   margin-left: 10px;
 }
+
+
+button:hover {
+  background-color: #afc6ffa8;
+  color: white;
+  filter: drop-shadow(-10px 10px 10px #827397);
+}
+
+button {
+  font-family: "Chivo", sans-serif;
+  padding: 5px;
+  border-radius: 10px;
+  border-color: #afc6ff;
+  background-color: #afc6ff;
+  color: white;
+  font-size: 1=20px;
+  width: 120px;
+  height: 70px;
+  margin-right: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  filter: drop-shadow(-10px 10px 20px #827397);
+}
 </style>
