@@ -6,6 +6,12 @@ const calculateTotal = () => {
   return store.cart.reduce((total, movie) => total + movie.runtime, 0);
 };
 
+const remove = () => {
+const index=store.cart.indexOf(movie.id);
+console.log(indexOf(movie.id));
+store.removeFromCart(index);
+};
+
 </script>
 
 <template>
@@ -25,7 +31,7 @@ const calculateTotal = () => {
       <div id="column-left">
         <h2>{{ movie.title }}</h2>
         <h2>Price: ${{ movie.runtime }}.00</h2>
-        <button @click="removeFromCart(movie.id)">Remove</button>
+        <button @click="remove(movie.id)">Remove</button>
       </div>
     </div>
   </div>

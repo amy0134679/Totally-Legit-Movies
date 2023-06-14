@@ -14,45 +14,56 @@ import { getDoc, doc } from "@firebase/firestore";
 
 const store = useStore();
 const router = useRouter();
-const email = ref("");
+const emailOne = ref("");
+const emailTwo = ref("");
 const passwordOne = ref("");
 const passwordTwo = ref("");
+const passwordThree = ref("");
+
 
 const registerViaEmail = async () => {
   if (passwordOne.value !== passwordTwo.value) {
-    alert("Your username or password is incorrect DUMBASS");
+    alert("Your passwords do not match!");
     return;
   }
   const { user } = await createUserWithEmailAndPassword(
     auth,
-    email.value,
+    emailOne.value,
     passwordOne.value
   );
   store.user = user;
   router.push("/purchase");
 };
 const loginViaEmail = async () => {
+  if (passwordThree.value !== passwordOne.value  || emailOne.value !== emailTwo.value) {
+    alert("Your username or password is incorrect!");
+    return;
+  }
   try {
     const { user } = await signInWithEmailAndPassword(
       auth,
-      email.value,
+      emailTwo.value,
       passwordOne.value
     );
     store.user = user;
+    const cartDoc = await getDoc(doc(firestore, "carts", user.email));
+  if (cartDoc.exists()) {
+    const cartData = cartDoc.data();
+    store.cart = cartData.cart;
+  }
     router.push("/purchase");
   } catch (error) {
     console.log(error);
   }
 };
+
 const registerViaGithub = async () => {
   const provider = new GithubAuthProvider();
+  const { user } = await signInWithPopup(auth, provider);
+  store.user = user;
   console.log("github signin working")
-  signInWithPopup(auth, provider)
-  .then((result) => {
-    const usertest = result.user;
-    console.log(usertest)
-})
-
+  // const { cart } = (await getDoc(doc(firestore, "carts", user.email))).data();
+  // store.cart = cart;
   router.push("/purchase");
 };
 
@@ -78,19 +89,25 @@ const registerViaGoogle = async () => {
   <div class="auth-container">
     <div class="sign-in-column">
       <div>
-        <h1>Register via <br> Google</h1>
+        <h1>
+          Register via <br />
+          Google
+        </h1>
         <button id="google-button" @click="registerViaGoogle()">Google</button>
       </div>
       <div>
-        <h1>Register via <br> Github</h1>
-        <button  @click="registerViaGithub()">Github</button>
+        <h1>
+          Register via <br />
+          Github
+        </h1>
+        <button @click="registerViaGithub()">Github</button>
       </div>
     </div>
     <div class="sign-in-column">
       <div>
-        <h1>Register via <br>Email</h1>
+        <h1>Register via <br />Email</h1>
         <form class="setup" @submit.prevent="registerViaEmail()">
-          <input v-model="email" type="email" placeholder="email" />
+          <input v-model="emailOne" type="email" placeholder="email" />
           <input
             v-model="passwordOne"
             type="password"
@@ -106,10 +123,10 @@ const registerViaGoogle = async () => {
       </div>
     </div>
     <div>
-      <h1>Login via <br>Email</h1>
+      <h1>Login via <br />Email</h1>
       <form class="login" @submit.prevent="loginViaEmail()">
-        <input v-model="email" type="email" placeholder="Email" />
-        <input v-model="passwordOne" type="password" placeholder="Password" />
+        <input v-model="emailTwo" type="email" placeholder="Email" />
+        <input v-model="passwordThree" type="password" placeholder="Password" />
         <input type="submit" value="Login" />
       </form>
     </div>
@@ -169,8 +186,7 @@ input {
   gap: 1rem;
 }
 
-
- /* andy
+/* andy
   const registerViaGoogle = async () => {
   const provider = new GoogleAuthProvider();
   console.log("working")
@@ -180,8 +196,4 @@ input {
   store.cart = cart;
   router.push("/purchase");
 }; */
-
-
-
 </style>
-
