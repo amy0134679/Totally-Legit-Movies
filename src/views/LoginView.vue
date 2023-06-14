@@ -88,42 +88,36 @@ const registerViaGoogle = async () => {
   />
   <div class="auth-container">
     <div class="sign-in-column">
-        <h1>Register via Email</h1>
-        <form class="setup" @submit.prevent="registerViaEmail()">
-          <input v-model="emailOne" type="email" placeholder="email" />
-          <input
-            v-model="passwordOne"
-            type="password"
-            placeholder="Enter Password"
-          />
-          <input
-            v-model="passwordTwo"
-            type="password"
-            placeholder="Re-enter Password"
-          />
-          <input class="login-button" type="submit" value="REGISTER AND LOGIN" />
-        </form>
-      </div>
-    
-      <div class="sign-in-column">
-        <h1>Login via Email</h1>
-        <form class="login" @submit.prevent="loginViaEmail()">
-          <input v-model="emailTwo" type="email" placeholder="Email" />
-          <input
-            v-model="passwordThree"
-            type="password"
-            placeholder="Password"
-          />
-          <input class="login-button" type="submit" value="LOGIN" />
-        </form>
-        <h1>Sign in via</h1>
-        <button id="google-button" @click="registerViaGoogle()">
-          <i class="fab fa-google"></i> Google
-        </button>
-      </div>
+      <h1>Register via Email</h1>
+      <form class="setup" @submit.prevent="registerViaEmail()">
+        <input v-model="emailOne" type="email" placeholder="email" />
+        <input
+          v-model="passwordOne"
+          type="password"
+          placeholder="Enter Password"
+        />
+        <input
+          v-model="passwordTwo"
+          type="password"
+          placeholder="Re-enter Password"
+        />
+        <input class="login-button" type="submit" value="REGISTER AND LOGIN" />
+      </form>
     </div>
 
-
+    <div class="sign-in-column">
+      <h1>Login via Email</h1>
+      <form class="login" @submit.prevent="loginViaEmail()">
+        <input v-model="emailTwo" type="email" placeholder="Email" />
+        <input v-model="passwordThree" type="password" placeholder="Password" />
+        <input class="login-button" type="submit" value="LOGIN" />
+      </form>
+      <h1>Register or Sign in via</h1>
+      <button id="google-button" @click="registerViaGoogle()">
+        <i class="fab fa-google"></i> Google
+      </button>
+    </div>
+  </div>
 </template>
 <style scoped>
 .login-button {
@@ -148,7 +142,7 @@ const registerViaGoogle = async () => {
 
 .sign-in-column {
   padding: 6%;
-  width: 100%; 
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

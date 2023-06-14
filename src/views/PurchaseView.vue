@@ -127,25 +127,25 @@ const getTMDBData = async (url, options, page) => {
 </template>
 
 <style scoped>
- /* makes stars sparkle but website too slow ): */
-/* @-webkit-keyframes glow {
+ /* makes stars sparkle but website too slow ):  */
+ @-webkit-keyframes glow {
   from {
-    text-shadow: 0 0 10px #fff, 0 0 40px #d4ce89, 0 0 60px #e5b30f;
+    text-shadow: 0 0 100px #fff, 0 0 40px #d4ce89, 0 0 100px #e5b30f;
   }
   
   to {
-    text-shadow: 0 0 20px #fff, 0 0 60px #d8bbf4eb, 0 0 70px #a98beb;
+    text-shadow: 0 0 10px #ffffff82, 0 0 60px #d8bbf457, 0 0 70px #a98beb29;
   }
-} */
+}
 
 #divider {
   text-align:justify;
-  /* animation: glow 2s ease-in-out infinite alternate; */
+  animation: glow 1.5s ease-in-out infinite alternate;
   margin-top: -35px;
   margin-bottom: -20px;
   color: #d4bc6d;
   font-size: 30px;
-  /* filter: drop-shadow(20px 20px 500px #d4bc6d); */
+  filter: drop-shadow(20px 20px 500px #9a8c6173);
 }
 .controls {
   display: flex;

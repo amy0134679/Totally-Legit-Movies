@@ -50,11 +50,14 @@ const remove = (movie) => {
 
 <style scoped>
 #background {
-  position: absolute;
-  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
-  z-index: -3;
+  height: 100vh;
+  z-index: -1;
 }
+
 .summary-item {
   border-bottom: 3px solid #dba4b5;
 }
