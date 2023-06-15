@@ -8,14 +8,14 @@
   <div id="cart-container">
     <div id="movie-list">
       <h1>Your Shopping Cart</h1>
-      <div class="movie" v-for="movie in store.cart" :key="movie.id">
+      <div class="movie" v-for="(movie,index) in store.cart" :key="index">
         <div id="column-left">
           <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster}`" />
         </div>
         <div id="column-left">
           <h2>{{ movie.title }}</h2>
           <h2>Price: ${{ movie.runtime }}.00</h2>
-          <button @click="remove(movie)">Remove</button>
+          <button @click="remove(index)">Remove</button>
         </div>
       </div>
     </div>
@@ -41,10 +41,8 @@ const calculateTotal = () => {
 };
 
 const remove = (movie) => {
-  const index = store.cart.findIndex((item) => item.id === movie.id);
-  if (index > -1) {
-    store.removeFromCart(index);
-  }
+  store.cart.splice(movie,1);
+  delete setdoc(doc(firestore, "carts", this.user.email), { cart: this.cart})
 };
 </script>
 

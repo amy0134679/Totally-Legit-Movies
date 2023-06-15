@@ -34,7 +34,6 @@ const registerViaEmail = async () => {
 };
 const loginViaEmail = async () => {
   try {
-    console.log(passwordOne.value);
     const { user } = await signInWithEmailAndPassword(
       auth,
       emailTwo.value,
