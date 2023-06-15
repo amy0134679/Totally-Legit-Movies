@@ -39,7 +39,9 @@ const getTMDBData = async (url, options, page) => {
   <img id="background" :src="`https://wallpapercave.com/wp/wp3354898.jpg`" />
   <div class="header-container header-items">
     <h1>Browse Trending Movies</h1>
-    <p id="divider">⋆⁺｡˚⋆˙‧₊✩₊‧˙⋆˚｡⁺⋆⁺｡˚⋆˙‧₊✩₊‧˙⋆˚｡⁺⋆⁺｡˚⋆˙‧₊✩₊‧˙⋆˚｡⁺⋆⁺｡˚⋆˙‧₊✩₊‧˙⋆˚｡⁺⋆⁺｡˚⋆˙‧₊✩₊‧˙⋆˚｡⁺⋆⁺｡˚⋆˙‧₊✩₊‧˙⋆˚｡⁺⋆</p>
+    <p id="divider">
+      ‧˙⋆˚｡⁺⋆⁺｡˚⋆˙‧₊✩₊‧˙⋆˚｡⁺⋆⁺｡˚⋆˙‧₊✩₊‧˙⋆˚｡⁺⋆⁺｡˚⋆˙‧₊✩₊‧˙⋆˚｡⁺⋆⁺｡˚⋆˙‧₊✩₊‧˙⋆˚｡⁺⋆⁺｡˚⋆˙‧₊✩₊‧˙⋆˚｡⁺⋆
+    </p>
     <div class="header-items">
       <div class="controls">
         <div>
@@ -127,8 +129,8 @@ const getTMDBData = async (url, options, page) => {
 </template>
 
 <style scoped>
- /* makes stars sparkle but website too slow ):  */
- @-webkit-keyframes glow {
+/* makes stars sparkle but website too slow ):  */
+/* @-webkit-keyframes glow {
   from {
     text-shadow: 0 0 100px #fff, 0 0 40px #d4ce89, 0 0 100px #e5b30f;
   }
@@ -136,11 +138,11 @@ const getTMDBData = async (url, options, page) => {
   to {
     text-shadow: 0 0 10px #ffffff82, 0 0 60px #d8bbf457, 0 0 70px #a98beb29;
   }
-}
+} */
 
 #divider {
-  text-align:justify;
-  animation: glow 1.5s ease-in-out infinite alternate;
+  text-align: justify;
+  /* animation: glow 1.5s ease-in-out infinite alternate; */
   margin-top: -35px;
   margin-bottom: -20px;
   color: #d4bc6d;
@@ -152,7 +154,7 @@ const getTMDBData = async (url, options, page) => {
   flex-direction: row-reverse;
   justify-content: space-between;
   width: 100%;
-  padding: 25px ;
+  padding: 25px;
 }
 
 .header-container {

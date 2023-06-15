@@ -41,7 +41,7 @@ const calculateTotal = () => {
 };
 
 const remove = (movie) => {
-  const index = store.cart.findIndex(item => item.id === movie.id);
+  const index = store.cart.findIndex((item) => item.id === movie.id);
   if (index > -1) {
     store.removeFromCart(index);
   }
@@ -139,7 +139,6 @@ h3 {
 .price {
   margin-left: 10px;
 }
-
 
 button:hover {
   background-color: #afc6ffa8;

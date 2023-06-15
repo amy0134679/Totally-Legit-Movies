@@ -33,18 +33,12 @@ const registerViaEmail = async () => {
   router.push("/purchase");
 };
 const loginViaEmail = async () => {
-  if (
-    passwordThree.value !== passwordOne.value ||
-    emailOne.value !== emailTwo.value
-  ) {
-    alert("Your username or password is incorrect!");
-    return;
-  }
   try {
+    console.log(passwordOne.value);
     const { user } = await signInWithEmailAndPassword(
       auth,
       emailTwo.value,
-      passwordOne.value
+      passwordThree.value
     );
     store.user = user;
     const cartDoc = await getDoc(doc(firestore, "carts", user.email));
@@ -54,10 +48,9 @@ const loginViaEmail = async () => {
     }
     router.push("/purchase");
   } catch (error) {
-    console.log(error);
+    alert("Your username or password is incorrect!");
   }
 };
-
 const registerViaGoogle = async () => {
   const provider = new GoogleAuthProvider();
   const { user } = await signInWithPopup(auth, provider);
@@ -86,11 +79,12 @@ const registerViaGoogle = async () => {
     :src="`https://wallpaper-house.com/data/out/10/wallpaper2you_418284.jpg`"
     alt=""
   />
+
   <div class="auth-container">
     <div class="sign-in-column">
       <h1>Register via Email</h1>
       <form class="setup" @submit.prevent="registerViaEmail()">
-        <input v-model="emailOne" type="email" placeholder="email" />
+        <input v-model="emailOne" type="email" placeholder="Enter your Email" />
         <input
           v-model="passwordOne"
           type="password"
@@ -104,7 +98,6 @@ const registerViaGoogle = async () => {
         <input class="login-button" type="submit" value="REGISTER AND LOGIN" />
       </form>
     </div>
-
     <div class="sign-in-column">
       <h1>Login via Email</h1>
       <form class="login" @submit.prevent="loginViaEmail()">
@@ -119,6 +112,7 @@ const registerViaGoogle = async () => {
     </div>
   </div>
 </template>
+
 <style scoped>
 .login-button {
   font-family: "Chivo", sans-serif;
@@ -203,7 +197,7 @@ h1 {
   filter: drop-shadow(-10px 10px 20px #827397);
   margin-top: 200px;
   height: 500px;
-  width: 40%;
+  width: 50%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
