@@ -1,8 +1,16 @@
-# Vue 3 + Vite
+## Features
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+- **Extensive Movie Database:** Access a vast collection of movies with detailed reviews.
+- **Search Functionality:** Easily find movies by title, genre, or keywords.
+- **Category Browsing:** Explore movies grouped by categories such as genre, release year, or popularity.
+- **User-Friendly Interface:** Enjoy a clean and intuitive design for seamless navigation.
 
-## Recommended IDE Setup
+## Technologies Used
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-# summative
+- **Frontend:**
+  - Vue.js 3: JavaScript framework for building user interfaces.
+  - Vite: Next-generation frontend tooling for faster development.
+- **Backend:**
+  - Firebase Firestore: NoSQL database for storing movie data and reviews.
+- **Deployment:**
+  - Firebase Hosting: Hosting service for fast and secure web applications.
