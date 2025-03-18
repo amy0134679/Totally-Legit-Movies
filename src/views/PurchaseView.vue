@@ -1,4 +1,4 @@
-<script setup>
+help me fix the page number counter <script setup>
 import axios from "axios";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
@@ -17,21 +17,25 @@ const toggleModal = (id) => {
   showModal.value = !showModal.value;
   selectedRecordId.value = id;
 };
-const getTMDBData = async (url, options, page) => {
-  movies.value = (
-    await axios.get(url, {
+const getTMDBData = async (url, options, newPage) => {
+  try {
+    const response = await axios.get(url, {
       params: {
-        api_key: import.meta.env.VITE_TMDB_API_KEY,
+        api_key: "0eb8e017d7722a11ae19d1a914fbc822", // Hardcode the API key for testing
         region: "US",
         language: "en",
         include_adult: false,
-        page,
+        page: newPage,
         ...options,
       },
-    })
-  ).data;
-  totalPages.value = movies.value.total_pages;
-  currentURL.value = url;
+    });
+    movies.value = response.data;
+    totalPages.value = movies.value.total_pages;
+    currentURL.value = url;
+    page.value = newPage;
+  } catch (error) {
+    console.error("Error fetching movies:", error);
+  }
 };
 </script>
 
@@ -178,7 +182,7 @@ const getTMDBData = async (url, options, page) => {
 }
 
 #selector-button {
-  background-color: rgba(244, 210, 252, 0.75);
+  background-color: rgba(117, 74, 126, 0.75);
   border-color: rgba(240, 199, 249, 0.466);
 }
 
@@ -205,9 +209,13 @@ const getTMDBData = async (url, options, page) => {
   padding: 1rem;
   font-size: 1rem;
   background-color: rgba(244, 210, 252, 0.521);
-  color: white;
+  color: rgb(61, 43, 115);
   filter: drop-shadow(-10px 10px 20px #827397);
   font-family: "Chivo", sans-serif;
+}
+
+#selector-box:hover {
+  background-color: rgba(240, 199, 249, 0.591);
 }
 
 h1 {
@@ -246,7 +254,7 @@ button {
 }
 
 img {
-  width: 250px;
+  width: 300px;
 }
 
 img:hover {
@@ -273,13 +281,13 @@ img:hover {
 }
 .tiles {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  row-gap: 40px;
+  grid-template-columns: repeat(6, 1fr);
+  row-gap: 30px;
   margin-left: 30px;
 }
 
 img {
-  width: 220px;
+  width: 300px;
 }
 
 .pagination {
@@ -288,11 +296,10 @@ img {
   right: 32%;
   text-align-last: center;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 20px;
   display: flex;
   position: fixed;
   bottom: 20px;
-  gap: 1rem;
   align-self: center;
   filter: drop-shadow(-10px 10px 20px #827397);
   font-family: "Chivo", sans-serif;
