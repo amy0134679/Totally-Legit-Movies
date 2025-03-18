@@ -1,4 +1,4 @@
-help me fix the page number counter <script setup>
+<script setup>
 import axios from "axios";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
@@ -13,10 +13,12 @@ const currentURL = ref("");
 const totalPages = ref("------");
 const showModal = ref(false);
 const selectedRecordId = ref(0);
+
 const toggleModal = (id) => {
   showModal.value = !showModal.value;
   selectedRecordId.value = id;
 };
+
 const getTMDBData = async (url, options, newPage) => {
   try {
     const response = await axios.get(url, {
@@ -32,9 +34,23 @@ const getTMDBData = async (url, options, newPage) => {
     movies.value = response.data;
     totalPages.value = movies.value.total_pages;
     currentURL.value = url;
-    page.value = newPage;
+    page.value = newPage; // Update the page variable
   } catch (error) {
     console.error("Error fetching movies:", error);
+  }
+};
+
+// Function to handle pagination
+const handlePagination = (direction) => {
+  let newPage = page.value;
+  if (direction === "next" && page.value < totalPages.value) {
+    newPage = page.value + 1;
+  } else if (direction === "prev" && page.value > 1) {
+    newPage = page.value - 1;
+  }
+
+  if (newPage !== page.value) {
+    getTMDBData(currentURL.value, { query: search.value, with_genres: genre.value }, newPage);
   }
 };
 </script>
@@ -60,7 +76,7 @@ const getTMDBData = async (url, options, newPage) => {
             @click="
               getTMDBData('https://api.themoviedb.org/3/search/movie', {
                 query: search,
-              })
+              }, 1)
             "
           >
             Search
@@ -80,7 +96,7 @@ const getTMDBData = async (url, options, newPage) => {
             @click="
               getTMDBData('https://api.themoviedb.org/3/discover/movie', {
                 with_genres: genre,
-              })
+              }, 1)
             "
           >
             Sort
@@ -91,33 +107,9 @@ const getTMDBData = async (url, options, newPage) => {
     </div>
 
     <div class="pagination">
-      <button
-        @click="
-          getTMDBData(
-            currentURL,
-            {
-              query: search,
-            },
-            page === 1 ? 1 : page--
-          )
-        "
-      >
-        Prev
-      </button>
+      <button @click="handlePagination('prev')">Prev</button>
       <p>{{ `Page ${page} of ${totalPages}` }}</p>
-      <button
-        @click="
-          getTMDBData(
-            currentURL,
-            {
-              query: search,
-            },
-            page >= totalPages ? totalPages : page++
-          )
-        "
-      >
-        Next
-      </button>
+      <button @click="handlePagination('next')">Next</button>
     </div>
   </div>
   <div v-if="movies" class="tiles">
@@ -131,10 +123,9 @@ const getTMDBData = async (url, options, newPage) => {
 
   <Modal v-if="showModal" :id="selectedRecordId" @toggleModal="toggleModal()" />
 </template>
-
 <style scoped>
 /* makes stars sparkle but website too slow ):  */
-/* @-webkit-keyframes glow {
+/* @-webkit-ynframes glow {
   from {
     text-shadow: 0 0 100px #fff, 0 0 40px #d4ce89, 0 0 100px #e5b30f;
   }
@@ -292,8 +283,8 @@ img {
 
 .pagination {
   z-index: 1;
-  left: 32%;
-  right: 32%;
+  left: 38%;
+  right: 40%;
   text-align-last: center;
   padding: 20px;
   border-radius: 20px;
