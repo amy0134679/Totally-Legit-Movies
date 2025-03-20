@@ -20,18 +20,31 @@ const passwordTwo = ref("");
 const passwordThree = ref("");
 
 const registerViaEmail = async () => {
+  // Check if the password is at least 6 characters long
+  if (passwordOne.value.length < 6) {
+    alert("Password must be at least 6 characters long!");
+    return;
+  }
+
+  // Check if the passwords match
   if (passwordOne.value !== passwordTwo.value) {
     alert("Your passwords do not match!");
     return;
   }
-  const { user } = await createUserWithEmailAndPassword(
-    auth,
-    emailOne.value,
-    passwordOne.value
-  );
-  store.user = user;
-  router.push("/purchase");
+
+  try {
+    const { user } = await createUserWithEmailAndPassword(
+      auth,
+      emailOne.value,
+      passwordOne.value
+    );
+    store.user = user;
+    router.push("/purchase");
+  } catch (error) {
+    alert("Error during registration: " + error.message);
+  }
 };
+
 const loginViaEmail = async () => {
   try {
     const { user } = await signInWithEmailAndPassword(
@@ -50,6 +63,7 @@ const loginViaEmail = async () => {
     alert("Your username or password is incorrect!");
   }
 };
+
 const registerViaGoogle = async () => {
   const provider = new GoogleAuthProvider();
   const { user } = await signInWithPopup(auth, provider);
@@ -94,6 +108,10 @@ const registerViaGoogle = async () => {
           type="password"
           placeholder="Re-enter Password"
         />
+        <!-- Password requirement message -->
+        <p v-if="passwordOne.length > 0 && passwordOne.length < 6" class="error-message">
+          Password must be at least 6 characters long.
+        </p>
         <input class="login-button" type="submit" value="REGISTER AND LOGIN" />
       </form>
     </div>
@@ -113,6 +131,12 @@ const registerViaGoogle = async () => {
 </template>
 
 <style scoped>
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
 .login-button {
   font-family: "Chivo", sans-serif;
   padding: 20px;
